@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">PremierLeagueFixtures</string>
+
+
+    <string name="title_activity_main_result">MainActivityResult</string>
+
+
+
+    // text
+
+    <string name="buttonMatchList">Match List</string>
+    <string name="buttonMatchDetails">Match Details</string>
+
+    <string name="MatchList">Match List</string>
+    <string name="MatchDetail">Match Detail</string>
+
+
 </resources>
