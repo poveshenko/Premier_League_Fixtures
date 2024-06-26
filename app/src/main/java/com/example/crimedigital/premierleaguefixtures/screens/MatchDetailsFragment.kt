@@ -11,14 +11,14 @@ import com.example.crimedigital.premierleaguefixtures.databinding.FragmentMatchD
 
 class MatchDetailsFragment : Fragment() {
 
-    private var _binding: FragmentMatchDetailsBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentMatchDetailsBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMatchDetailsBinding.inflate(inflater, container, false)
+        binding = FragmentMatchDetailsBinding.inflate(inflater, container, false)
 
         binding.apply {
             toolbar2.setNavigationOnClickListener {
@@ -33,8 +33,5 @@ class MatchDetailsFragment : Fragment() {
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }
