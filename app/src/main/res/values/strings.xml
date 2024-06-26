@@ -10,9 +10,32 @@
 
     <string name="buttonMatchList">Match List</string>
     <string name="buttonMatchDetails">Match Details</string>
-
     <string name="MatchList">Match List</string>
     <string name="MatchDetail">Match Detail</string>
+
+
+
+    <string name="textTitleMatchDetails">Детали</string>
+    <string name="textTitleInfo">Инфо</string>
+    <string name="buttonBack">Назад</string>
+    <string name="textTitleMatchList">Футбольные матчи</string>
+    <string name="hint">Введите название команды</string>
+    <string name="contentDescription">description_of_the_image</string>
+    <string name="contentDescriptionScore">Score for Home Team</string>
+    <string name="contentDescriptionScoreAway">Score for Away Team</string>
+
+    <string name="Match">Match Number:</string>
+    <string name="Round">Round Number:</string>
+    <string name="Time">Date Utc:</string>
+    <string name="Location">Location:</string>
+    <string name="group">Group:</string>
+    <string name="team1">Brentford</string>
+    <string name="team2">Arsenal</string>
+    <string name="scoreHomeTeam">2</string>
+    <string name="scoreHomeAway">0</string>
+
+
+
 
 
 </resources>

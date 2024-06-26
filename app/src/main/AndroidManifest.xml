@@ -19,7 +19,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".lesson_2.Container"
+            android:name=".screens.Container"
             android:exported="true"
 
             >

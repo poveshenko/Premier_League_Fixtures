@@ -2,17 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/my_nav"
-    app:startDestination="@id/matchListFragment2">
+    app:startDestination="@id/matchListFragment">
 
     <fragment
-        android:id="@+id/matchListFragment2"
-        android:name="com.example.crimedigital.premierleaguefixtures.lesson_2.MatchListFragment"
-        android:label="fragment_match_list"
-        tools:layout="@layout/fragment_match_list" />
-    <fragment
         android:id="@+id/matchDetailsFragment"
-        android:name="com.example.crimedigital.premierleaguefixtures.lesson_2.MatchDetailsFragment"
-        android:label="fragment_match_details"
-        tools:layout="@layout/fragment_match_details" />
+        android:name="com.example.crimedigital.premierleaguefixtures.screens.MatchDetailsFragment"
+        android:label="Match Details"
+        tools:layout="@layout/fragment_match_details">
+        <action
+            android:id="@+id/action_matchDetailsFragment_to_matchListFragment"
+            app:destination="@id/matchListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/matchListFragment"
+        android:name="com.example.crimedigital.premierleaguefixtures.screens.MatchListFragment"
+        android:label="Match List"
+        tools:layout="@layout/fragment_match_list">
+        <action
+            android:id="@+id/action_matchListFragment_to_matchDetailsFragment"
+            app:destination="@id/matchDetailsFragment" />
+    </fragment>
 </navigation>
