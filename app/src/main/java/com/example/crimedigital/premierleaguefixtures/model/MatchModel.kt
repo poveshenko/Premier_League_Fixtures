@@ -11,3 +11,7 @@ data class MatchModel(
     val MatchNumber: Int,
     val RoundNumber: Int
 )
+
+
+//MatchModel представляет данные о матче.
+//Используется для хранения информации о матче, такой как команды, счета, дата и т.д.

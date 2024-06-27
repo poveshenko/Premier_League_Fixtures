@@ -7,16 +7,18 @@ import com.example.crimedigital.premierleaguefixtures.databinding.ListItemMatchB
 import com.example.crimedigital.premierleaguefixtures.model.MatchModel
 
 class MatchAdapter : PagingDataAdapter<MatchModel, MatchAdapter.MatchViewHolder>(MATCH_COMPARATOR) {
-
+    // Создает ViewHolder для отображения данных элемента
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
         val binding = ListItemMatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MatchViewHolder(binding)
     }
 
+    // Привязывает данные к ViewHolder
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 
+    // ViewHolder для управления элементами списка
     class MatchViewHolder(private val binding: ListItemMatchBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(match: MatchModel) {
             binding.apply {
@@ -31,6 +33,7 @@ class MatchAdapter : PagingDataAdapter<MatchModel, MatchAdapter.MatchViewHolder>
         }
     }
 
+    // Компаньон-объект для сравнения элементов списка
     companion object {
         private val MATCH_COMPARATOR = object : DiffUtil.ItemCallback<MatchModel>() {
             override fun areItemsTheSame(oldItem: MatchModel, newItem: MatchModel): Boolean {
@@ -43,3 +46,8 @@ class MatchAdapter : PagingDataAdapter<MatchModel, MatchAdapter.MatchViewHolder>
         }
     }
 }
+
+
+//PagingDataAdapter используется для работы с данными, которые загружаются постранично.
+//MatchViewHolder управляет представлением элемента списка.
+//MATCH_COMPARATOR сравнивает элементы списка для оптимизации обновлений.

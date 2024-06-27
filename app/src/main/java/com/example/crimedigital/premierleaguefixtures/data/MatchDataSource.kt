@@ -2,30 +2,32 @@ package com.example.crimedigital.premierleaguefixtures.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.example.crimedigital.premierleaguefixtures.data.repository.MatchRepository
 import com.example.crimedigital.premierleaguefixtures.model.MatchModel
+import kotlinx.coroutines.flow.first
 
-class MatchDataSource(private val matchList: List<MatchModel>) : PagingSource<Int, MatchModel>() {
+class MatchDataSource(private val repository: MatchRepository) : PagingSource<Int, MatchModel>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MatchModel> {
         return try {
             val pageNumber = params.key ?: 0
-            val pageSize = params.loadSize
+            val matches = repository.getMatches().first()
 
-            val fromIndex = pageNumber * pageSize
-            val toIndex = (pageNumber + 1) * pageSize.coerceAtMost(matchList.size)
+            val fromIndex = pageNumber * params.loadSize
+            val toIndex = (pageNumber + 1) * params.loadSize.coerceAtMost(matches.size)
 
-            if (fromIndex >= matchList.size) {
+            if (fromIndex >= matches.size) {
                 LoadResult.Page(
                     data = emptyList(),
                     prevKey = if (pageNumber > 0) pageNumber - 1 else null,
                     nextKey = null
                 )
             } else {
-                val matches = matchList.subList(fromIndex, toIndex)
+                val pagedMatches = matches.subList(fromIndex, toIndex)
                 LoadResult.Page(
-                    data = matches,
+                    data = pagedMatches,
                     prevKey = if (pageNumber > 0) pageNumber - 1 else null,
-                    nextKey = if (toIndex < matchList.size) pageNumber + 1 else null
+                    nextKey = if (toIndex < matches.size) pageNumber + 1 else null
                 )
             }
         } catch (e: Exception) {
@@ -40,3 +42,7 @@ class MatchDataSource(private val matchList: List<MatchModel>) : PagingSource<In
         }
     }
 }
+
+//MatchDataSource отвечает за загрузку данных для пагинации.
+//load загружает данные и возвращает их постранично.
+//getRefreshKey определяет ключ для обновления данных.
